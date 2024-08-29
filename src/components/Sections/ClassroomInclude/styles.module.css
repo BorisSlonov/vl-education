@@ -136,6 +136,7 @@
 .img {
     width: 100%;
     object-fit: contain;
+    object-position: left center;
 }
 
 @media(max-width:1240px) {
