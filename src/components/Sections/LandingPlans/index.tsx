@@ -1,4 +1,5 @@
-import React from "react";
+'use client'
+import React, { useState } from "react";
 import styles from "./styles.module.css"
 import { InViewStyle } from "@/shared/ui/InViewStyle";
 import clsx from "clsx";
@@ -45,7 +46,45 @@ const trainingData = [
     },
 ];
 
+
+interface StyleObject {
+    transform: string;
+    transition: string;
+}
+
 const LandingPlans = () => {
+
+    const [stylesArray, setStylesArray] = useState<{ [key: number]: StyleObject }>({});
+
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, index: number) => {
+        const item = e.currentTarget;
+        const rect = item.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        const rotateX = -(y / rect.height) * 20;
+        const rotateY = -(x / rect.width) * 20;
+
+        setStylesArray((prevStyles) => ({
+            ...prevStyles,
+            [index]: {
+                transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.025)`,
+                transition: 'transform 0.6s ease',
+            },
+        }));
+    };
+
+    const handleMouseLeave = (index: number) => {
+        setStylesArray((prevStyles) => ({
+            ...prevStyles,
+            [index]: {
+                transform: 'none',
+                transition: 'transform 0.6s ease',
+            },
+        }));
+    };
+
+
     return (
         <section className={styles.section} id="types-of-training">
             <div className="container">
@@ -56,24 +95,33 @@ const LandingPlans = () => {
                 </InViewStyle>
                 <div className={styles.body}>
                     {trainingData.map((training, index) => (
-                        <InViewStyle
+                        <div
                             key={index}
-                            initialClass="bottomToTop"
-                            animationClass="visible"
-                            triggerOnce
-                            className={clsx(styles.item, styles[`item${index + 1}`])}
+                            style={stylesArray[index] || {}}
+                            onMouseMove={(e) => handleMouseMove(e, index)}
+                            onMouseLeave={() => handleMouseLeave(index)}
+                            className={styles.animeCard}
                         >
-                            <h3 className={styles.h3}>{training.title}</h3>
-                            <span className={styles.label}>{training.label}</span>
-                            <h4 className={styles.h4}>{training.description}</h4>
-                            <ul className={styles.ul}>
-                                {training.items.map((item, itemIndex) => (
-                                    <li className={styles.li} key={itemIndex}>
-                                        {item}
-                                    </li>
-                                ))}
-                            </ul>
-                        </InViewStyle>
+                            <InViewStyle
+                                key={index}
+                                initialClass="bottomToTop"
+                                animationClass="visible"
+                                triggerOnce
+                                className={clsx(styles.item, styles[`item${index + 1}`])}
+
+                            >
+                                <h3 className={styles.h3}>{training.title}</h3>
+                                <span className={styles.label}>{training.label}</span>
+                                <h4 className={styles.h4}>{training.description}</h4>
+                                <ul className={styles.ul}>
+                                    {training.items.map((item, itemIndex) => (
+                                        <li className={styles.li} key={itemIndex}>
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </InViewStyle>
+                        </div>
                     ))}
                 </div>
             </div>

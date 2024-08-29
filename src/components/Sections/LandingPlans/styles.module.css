@@ -1,6 +1,5 @@
 .section {
     padding-top: 80px;
-    overflow: hidden;
 }
 
 .body {
@@ -13,6 +12,12 @@
     padding: 45px 40px 60px;
     border-radius: 35px;
 }
+
+.animeCard {
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
 
 .h3 {
     font-size: 38px;
