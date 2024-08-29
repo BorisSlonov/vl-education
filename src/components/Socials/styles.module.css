@@ -1,0 +1,25 @@
+.socials {
+    display: flex;
+    gap: 20px;
+}
+
+.socialIcon,
+.socialIcon circle,
+.socialIcon path {
+    transition: all .3s;
+}
+
+.socialIcon:hover circle {
+    fill: #000;
+}
+
+.socialIcon:hover path {
+    fill: #7BF2DA;
+}
+
+@media(max-width:767px) {
+    .socialIcon {
+        width: 48px;
+        height: 48px;
+    }
+}

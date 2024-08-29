@@ -45,7 +45,8 @@ ul {
 .bottomToTop,
 .topToBottom,
 .rightToLeft,
-.leftToRight {
+.leftToRight,
+.leftToRightUp {
   opacity: 0;
   transition: all .3s !important;
   will-change: opacity, transform;
@@ -67,9 +68,41 @@ ul {
   transform: translateX(-50px);
 }
 
+.leftToRightUp {
+  transform: translate(-50px, 50px);
+}
+
 .visible {
   opacity: 1;
   transform: none;
+}
+
+
+.transparentToLighBtn {
+  transition: background-color .3s;
+  will-change: background-color;
+}
+
+.transparentToLighBtn:hover {
+  background-color: #7BF2DA;
+}
+
+.transparentToLighBtn svg {
+  transition: transform .3s;
+  will-change: transform;
+}
+
+.transparentToLighBtn:hover svg {
+  transform: rotate(45deg);
+}
+
+.transparentToLighBtn:hover svg path {
+  transition: fill .3s;
+  will-change: fill;
+}
+
+.transparentToLighBtn:hover svg path {
+  fill: #181818;
 }
 
 .container {
@@ -80,10 +113,14 @@ ul {
 }
 
 .h2 {
+  color: #181818;
   font-size: 48px;
   font-weight: 700;
   line-height: 110%;
   text-transform: uppercase;
+}
+
+.h2_mb24 {
   margin-bottom: 24px;
 }
 

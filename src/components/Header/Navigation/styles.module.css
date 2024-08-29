@@ -7,10 +7,12 @@
 .navLink {
   font-size: 16px;
   font-weight: 400;
+  transition: all .3s;
+  will-change: color;
 }
 
 .navLink:hover {
-  color: var(--purple-main);
+  color: #7BF2DA;
 }
 
 @media (max-width: 767px) {

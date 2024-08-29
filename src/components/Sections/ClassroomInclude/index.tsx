@@ -29,9 +29,9 @@ const ClassroomInclude = () => {
                                 width={450}
                                 height={250}
                                 src={'/classroomInclude.png'}
-                                alt="оборудование" 
+                                alt="оборудование"
                                 className={styles.img}
-                                />
+                            />
                         </InViewStyle>
                         <InViewStyle
                             initialClass="bottomToTop"
@@ -54,7 +54,7 @@ const ClassroomInclude = () => {
                     </div>
                     <div className={clsx(styles.item, styles.item2)}>
                         <ul className={styles.ul}>
-                            {classroomIncludeData.map((item, index) => (
+                            {classroomIncludeData && classroomIncludeData.map((item, index) => (
                                 <li
                                     key={index}
                                 >

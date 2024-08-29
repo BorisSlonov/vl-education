@@ -50,7 +50,7 @@ const LandingPlans = () => {
         <section className={styles.section} id="types-of-training">
             <div className="container">
                 <InViewStyle initialClass="leftToRight" animationClass="visible" triggerOnce>
-                    <h2 className="h2">
+                    <h2 className="h2 h2_mb24">
                         Мы ПРОВОДИМ
                     </h2>
                 </InViewStyle>

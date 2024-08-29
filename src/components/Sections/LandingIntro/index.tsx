@@ -4,14 +4,12 @@ import clsx from "clsx";
 import Link from "next/link";
 import VKIcon from "@/shared/ui/icons/vkIcon";
 import TGIcon from "@/shared/ui/icons/tgIcon";
-import Arrow from "./icons/arrow";
+import Arrow from "@/shared/ui/icons/arrowIcon";
 import { InViewStyle } from "@/shared/ui/InViewStyle";
+import Socials from "@/components/Socials";
 
 const LandingIntro = () => {
-    const socialLinks = [
-        { icon: VKIcon, url: "https://vk.com", alt: "VK" },
-        { icon: TGIcon, url: "https://t.me", alt: "Telegram" },
-    ];
+
     const programs = [
         { text: "Центровка", link: "alignment" },
         { text: "Вибродиагностика", link: "vibration-diagnostics" },
@@ -34,15 +32,7 @@ const LandingIntro = () => {
                             <p className={styles.begin}>
                                 Профессионализм начинается <span className={styles.accentColor}>здесь!</span>
                             </p>
-                            <ul className={styles.socials}>
-                                {socialLinks.map((social, index) => (
-                                    <li className={styles.social} key={index}>
-                                        <Link className={styles.socialLink} href={social.url}>
-                                            <social.icon className={styles.socialIcon} aria-label={social.alt} />
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
+                            <Socials className={styles.socials_mt25} />
                         </div>
                         <div className={styles.item1Bot}>
                             <h1 className={styles.h1}>
@@ -61,7 +51,7 @@ const LandingIntro = () => {
                         <ul className={styles.programs}>
                             {programs.map((program, index) => (
                                 <li className={styles.program} key={index}>
-                                    <Link className={styles.btn} href={`/${program.link}`}>
+                                    <Link className={clsx(styles.btn, "transparentToLighBtn")} href={`/${program.link}`}>
                                         {program.text}
                                         <Arrow className={styles.arrow} />
                                     </Link>
