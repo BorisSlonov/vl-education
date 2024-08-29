@@ -8,12 +8,14 @@
 }
 
 .item {
+    height: 100%;
     flex-basis: calc(100% / 3);
     padding: 45px 40px 60px;
     border-radius: 35px;
 }
 
 .animeCard {
+    height: 100%;
     transform-style: preserve-3d;
     will-change: transform;
 }
@@ -160,4 +162,5 @@
     .section {
         padding-top: 40px;
     }
+
 }
